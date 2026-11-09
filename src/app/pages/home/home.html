@@ -1,0 +1,80 @@
+<!-- Main Home Container -->
+<div class="home-container">
+
+  <!-- Header Section -->
+  <header class="home-header">
+    <h1>Electronic Hub</h1>
+    <p>Discover the Latest Electronic Products</p>
+  </header>
+
+  <!-- Welcome Section -->
+  <section class="welcome-section">
+    <h2>Welcome to Electronic Hub!</h2>
+    <p>
+      Find your favourite smartphones and electronic
+      gadgets at the best prices.
+    </p>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products-section">
+
+    <h2>Our Products</h2>
+
+    <div class="product-list">
+
+      @for (product of products; track product.id) {
+
+        <div class="product-card">
+
+          <!-- Product Image -->
+          <div class="product-image">
+            <img
+              [src]="'/images/' + product.image"
+              [alt]="product.name"
+            />
+          </div>
+
+          <!-- Product Information -->
+          <div class="product-info">
+
+            <h3>{{ product.name }}</h3>
+
+            <p>{{ product.description }}</p>
+
+            <h4>
+              {{ product.price | currency:'INR':'symbol':'1.2-2' }}
+            </h4>
+
+            <p>
+              ⭐ {{ product.rating }} / 5
+            </p>
+
+            <p>
+              Category: {{ product.category }}
+            </p>
+
+            <p>
+              Available Stock: {{ product.stock }}
+            </p>
+
+            <button type="button" class="cart-button">
+              Add to Cart
+            </button>
+
+          </div>
+
+        </div>
+
+      }
+      @empty {
+        <p class="no-products">
+          No products available!
+        </p>
+      }
+
+    </div>
+
+  </section>
+
+</div>
